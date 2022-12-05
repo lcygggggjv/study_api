@@ -44,11 +44,9 @@ class Test_login(unittest.TestCase):
             actual=res.text   #执行text格式
             # actual={msg:actual}
         print(actual)
-        expected=json.loads(item['expected'])  #取用例里的预期结果，进行转字典
-        print(expected)
-        for  k, v in  expected.items():   #循环预期结果的所有元素
-            self.assertTrue(actual[k],v)   #取实际结果的key，和预期结果的value值，对比预期结果在实际结果里
+        expected=item['expected'] #取用例里的预期结果
+        print(type(expected))
 
-
+        self.assertEqual(expected in actual ,True) #，对比预期结果在实际结果里
 
 
