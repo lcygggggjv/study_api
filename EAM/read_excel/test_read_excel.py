@@ -21,7 +21,7 @@ def read_rxcel(file_name,sheet_name="Sheet1"):
 
 if __name__ == '__main__':
 
-    fxpath=r'D:\Python_EAM_API\EAM\test_case\tc_cases.xlsx'
-
+    # fxpath=r'D:\Python_EAM_API\EAM\test_case\tc_cases.xlsx'
+    fxpath=r'/Users/lcy/PycharmProjects/study_api/EAM/test_case/tc_cases.xlsx'
     r=read_rxcel(fxpath,'login')
     print(r)
