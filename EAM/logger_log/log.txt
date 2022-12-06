@@ -74,3 +74,15 @@
 2022-12-05 22:36:21.249 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
 2022-12-05 22:36:21.527 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
 2022-12-05 22:36:21.781 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:20:54.984 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:20:55.905 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:20:56.206 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:20:56.485 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:22:01.443 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:22:01.886 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:22:02.142 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:22:02.396 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:22:41.499 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:22:41.918 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:22:42.183 | INFO     | test_login_ddt:test_login_01:21 - 运行结果
+2022-12-06 20:22:42.436 | INFO     | test_login_ddt:test_login_01:21 - 运行结果

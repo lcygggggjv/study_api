@@ -44,9 +44,12 @@ class Test_login(unittest.TestCase):
             actual=res.text   #执行text格式
             # actual={msg:actual}
         print(actual)
+        if actual["data"]==None:   #if判断  取实际结果里的data，正确的不是none，
+            actual=actual['errors'][0]['message']
+        else:
+            actual=actual
         expected=item['expected'] #取用例里的预期结果
-        print(type(expected))
-
+        print(expected)
         self.assertEqual(expected in actual ,True) #，对比预期结果在实际结果里
 
 

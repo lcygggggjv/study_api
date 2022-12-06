@@ -8,7 +8,7 @@ error={'errors': [{'message': '企业标识符错误，请重新填写', 'extens
 success={'data': {'login': {'__typename': 'AuthInfo','token': '2ZjxLHcKCLOp6xZCnzmNHyP8YtSvgCRd', 'userId': '09ad4dcd-b1e1-4da5-ac42-c41f9f8c7b14'}}}
 
 print(type(error['errors'][0]['message']))
-print(type(success['data']['login']['__typename']))
+print(type(success['data']['login']['token']))
 
 # for k,v  in  a.items():
 #     print(k,v)

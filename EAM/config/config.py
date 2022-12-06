@@ -14,3 +14,6 @@ class config:
 
     log = root_dir / eam_dir / 'logger_log' / 'log.txt'
 
+    tc_host='https://test2.teletraan.io/graphql/?login'
+
+    tc_sit_host='https://teamsit.teletraan.io/graphql/?login'
