@@ -1,7 +1,8 @@
 import requests
 
 from EAM.config.config import config
-
+import openpyxl
+from openpyxl.worksheet.worksheet import Worksheet
 
 class API:
 
@@ -13,9 +14,9 @@ class API:
                               "operationName": "login",
                               "variables": {
                                 "input": {
-                                  "account": 'eam111',
-                                  "password": 'teletraan',
-                                  "tenantCode": 'cr7'
+                                  "account": config.sit_account,
+                                  "password": config.sit_password,
+                                  "tenantCode": config.sit_tentcode
                                 }
                               },
                               "query": "mutation login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    userId\n    __typename\n  }\n}"
@@ -30,8 +31,23 @@ class API:
         return token
 
 
+    def read_excel(self,filename,sheetname):
+
+        workbook=openpyxl.load_workbook(filename)   #取文件的名称
+        sheet:Worksheet =workbook[sheetname]        #取sheet页
+
+        data=list(sheet.values)         #取sheet内容，转成列表
+
+        title=data[0]   #标题只取第0个
+        rows=data[1:]  #取内容从第一个开始
+
+
+        data=[dict(zip(title,row))  for row  in rows]       #先for循环，取列表内容，获取每一行内容，zip函数，依次拼接表头，转成字典格式，列表嵌套
+
+        return data
 
 if __name__ == '__main__':
     ad=API()
     token=ad.tc_login()
-    print(token)
+    exs=ad.read_excel(config.login_file,'login')
+    print(exs)

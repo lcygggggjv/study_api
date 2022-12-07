@@ -4,10 +4,10 @@ import unittest
 import requests
 from EAM.common.setting import logger
 from unittestreport import list_data,ddt
-from EAM.read_excel.test_read_excel import read_rxcel
+from EAM.read_excel.test_read_excel import read_excel
 from EAM.config.config import config
 
-cases=read_rxcel(config.login_file,'login')
+cases=read_excel(config.login_file,'login')
 
 
 
@@ -47,7 +47,7 @@ class Test_login(unittest.TestCase):
         if actual["data"]==None:   #if判断  取实际结果里的data，正确的不是none，
             actual=actual['errors'][0]['message']
         else:
-            actual=actual
+            actual=actual['data']['login']['__typename']
         expected=item['expected'] #取用例里的预期结果
         print(expected)
         self.assertEqual(expected in actual ,True) #，对比预期结果在实际结果里

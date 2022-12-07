@@ -4,11 +4,11 @@ import pytest
 import requests
 from loguru import logger
 
-from EAM.read_excel.test_read_excel import read_rxcel
+from EAM.read_excel.test_read_excel import read_excel
 from EAM.config.config import config
 
 
-cases=read_rxcel(config.login_file,'login')
+cases=read_excel(config.login_file,'login')
 
 
 
