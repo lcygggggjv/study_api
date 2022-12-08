@@ -37,12 +37,12 @@ class Test_login(unittest.TestCase):
                                })
         try:
             actual = res.json()  # 进行try 是json格式跳过
-
+            print(type(actual))
         except Exception as e:
             actual = res.text  # 执行text格式
             # actual={msg:actual}
-        print(actual)
         expected = item['expected']  # 取用例里的预期结果，进行转字典
-        print(expected)
+        # print(expected)
         # 循环预期结果的所有元素
-        self.assertEqual(expected in actual,True)  # 取实际结果的key，和预期结果的value值，对比预期结果在实际结果里
+        # for k, v in actual.items():
+        self.assertEqual(actual["data"] is not None, expected)  # 取实际结果的key，和预期结果的value值，对比预期结果在实际结果里
