@@ -22,11 +22,9 @@ class API:
                               "query": "mutation login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    userId\n    __typename\n  }\n}"
                             })
 
-        try:
-            result=res.json()
 
-        except Exception as e:
-            result=res.text
+        result=res.json()
+
         token=result['data']['login']['token']
         return token
 

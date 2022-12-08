@@ -37,12 +37,10 @@ class Test_login(unittest.TestCase):
   },
   "query": "mutation login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    userId\n    __typename\n  }\n}"
 })
-        try:
-            actual=res.json()   #进行try 是json格式跳过
 
-        except Exception as e:
-            actual=res.text   #执行text格式
-            # actual={msg:actual}
+        actual=res.json()   #进行try 是json格式跳过
+
+
         print(actual)
         if actual["data"]==None:   #if判断  取实际结果里的data，正确的不是none，
             actual=actual['errors'][0]['message']
