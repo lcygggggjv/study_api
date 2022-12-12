@@ -25,5 +25,6 @@ if __name__ == '__main__':
 
     # fxpath=r'D:\Python_EAM_API\EAM\test_case\tc_cases.xlsx'
 
-    r=read_excel(config.login_file,'login')
-    print(r)
+    r=read_excel(config.login_file,'category')
+    s=r[7]
+    print(s)
