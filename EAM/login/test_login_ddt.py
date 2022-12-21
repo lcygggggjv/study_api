@@ -5,10 +5,10 @@ import requests
 from EAM.common.setting import logger
 
 from unittestreport import list_data, ddt
-from EAM.read_excel.test_read_excel import read_rxcel
+from EAM.read_excel.test_read_excel import read_excel
 from EAM.config.config import config
 
-cases = read_rxcel(config.login_file, 'login')
+cases = read_excel(config.login_file, 'login')
 
 from unittestreport import list_data,ddt
 from EAM.read_excel.test_read_excel import read_excel
@@ -29,6 +29,7 @@ class Test_login(unittest.TestCase):
         data = item['data']  # 取用例里data数据
         data1 = json.loads(data)
         url = item['url']
+
         method = item['method']
 
         res = requests.request(method=method,
@@ -56,6 +57,26 @@ class Test_login(unittest.TestCase):
         # 循环预期结果的所有元素
         # for k, v in actual.items():
         self.assertEqual(actual["data"] is not None, expected)  # 取实际结果的key，和预期结果的value值，对比预期结果在实际结果里
+
+        method=item['method']
+
+        res=requests.request(method=method,
+                             url=url,
+                             json={
+  "operationName": "login",
+  "variables": {
+    "input": {
+      "account": data1['account'],
+      "password": data1['password'],
+      "tenantCode": data1['tenantCode']
+    }
+  },
+  "query": "mutation login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    userId\n    __typename\n  }\n}"
+})
+
+        actual=res.json()   #进行try 是json格式跳过
+
+
 
         print(actual)
         if actual["data"]==None:   #if判断  取实际结果里的data，正确的不是none，

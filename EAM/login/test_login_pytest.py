@@ -37,11 +37,7 @@ class Test_login():
                               "query": "mutation login($input: LoginInput!) {\n  login(input: $input) {\n    token\n    userId\n    __typename\n  }\n}"
                             })
 
-        try:
-            actual=res.json()
-
-        except  Exception as e:
-            actual=res.text
+        actual=res.json()
         print(actual)
 
         if actual["data"]==None:

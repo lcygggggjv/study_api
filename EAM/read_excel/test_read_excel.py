@@ -30,4 +30,10 @@ if __name__ == '__main__':
 
     # r=read_excel(config.login_file,'login')
 
+
     print(r)
+
+    r=read_excel(config.login_file,'category')
+    s=r[7]
+    print(s)
+

@@ -43,23 +43,23 @@ class test_category(unittest.TestCase,API):
                             })
 
 
-        try:
-            actual=res.json()
+        # try:
+        actual=res.json()
 
-        except Exception as e:
-            actual=res.text
+        # except Exception as e:
+        #     actual=res.text
 
 
         if actual["data"]:
             actual=actual["data"]
 
-        elif actual["errors"][0]["message"]:
+        elif actual["errors"]:
             actual=actual["errors"][0]["message"]
 
         else:
             actual=actual["error"]["errors"][0]["message"]
-        print(actual)
 
+        print(actual)
         expected=item["expected"]
         print(expected)
         self.assertEqual(expected in actual,True)
