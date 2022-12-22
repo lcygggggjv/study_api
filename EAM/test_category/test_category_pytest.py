@@ -93,7 +93,7 @@ class Test_category(API):
 # class Test_category(API):
 #
 #
-#     def setup(self):
+#     def setup_method(self):   #pytest的前置是加method
 #
 #         self.token=self.tc_login()
 #
