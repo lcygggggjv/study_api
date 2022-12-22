@@ -44,8 +44,35 @@ class API:
 
         return data
 
+
+
+    def canborrow_thing(self,token):
+
+        url="https://teamsit.teletraan.io/graphql/?thingList"
+        res=requests.request('post',
+                             url=url,
+                             headers={"Authorization":f"bearer {token}"},
+                             json={
+                                  "operationName": "thingList",
+                                  "variables": {
+                                    "filter": {
+                                      "canBorrowed": True,
+                                      "dataRangeLimit": False
+                                    },
+                                    "limit": 50,
+                                    "offset": 0
+                                  },
+                                  "query": "query thingList($filter: ThingFilterInput, $limit: Int, $offset: Int, $orderBy: [String!]) {\n  thingList(filter: $filter, limit: $limit, offset: $offset, orderBy: $orderBy) {\n    data {\n      ...thing\n      __typename\n    }\n    totalCount\n    __typename\n  }\n}\n\nfragment thing on Thing {\n  storageAddr\n  canOperateBorrowed\n  codePrefix\n  name\n  code\n  id\n  currentThingBorrow {\n    expected\n    borrower {\n      id\n      name\n      jobNumber\n      organizations {\n        id\n        name\n        __typename\n      }\n      __typename\n    }\n    departmentOfApplicant {\n      id\n      name\n      __typename\n    }\n    __typename\n  }\n  attachment {\n    name\n    id\n    __typename\n  }\n  department {\n    id\n    name\n    code\n    parentID\n    pathName\n    __typename\n  }\n  administrator {\n    id\n    name\n    __typename\n  }\n  manager {\n    id\n    name\n    jobNumber\n    organizations {\n      id\n      name\n      departmentId\n      __typename\n    }\n    __typename\n  }\n  area {\n    id\n    name\n    code\n    __typename\n  }\n  category {\n    id\n    name\n    pathInfo {\n      pathName\n      __typename\n    }\n    __typename\n  }\n  thingGroup {\n    name\n    id\n    parentId\n    __typename\n  }\n  groupFile {\n    name\n    file {\n      name\n      id\n      url\n      length\n      __typename\n    }\n    isCompleteFile\n    __typename\n  }\n  maintainer {\n    id\n    name\n    __typename\n  }\n  accountingDepartment {\n    id\n    name\n    __typename\n  }\n  image {\n    id\n    name\n    url\n    __typename\n  }\n  specification\n  modelNum\n  acceptanceAt\n  accountType\n  activatedAt\n  alertAt\n  applyForPurchaseAt\n  applyForPurchaseNum\n  arrivedAt\n  assetNormalizationAt\n  bookValue\n  brand\n  calibrateCode\n  calibrateMethod\n  calibrateResult\n  calibrateState\n  canCalibrate\n  calibrateRepeat {\n    frequency\n    period\n    __typename\n  }\n  isCalibrationExpired\n  canBorrowed\n  code\n  companyID\n  contractNum\n  depreciationOfYear\n  depreciationRate\n  depreciationRateOfMonth\n  desc\n  distributor\n  fieldData\n  finalValue\n  fuselageCode\n  id\n  installedAt\n  isCalibrationExpired\n  isCompleteFile\n  isDeleted\n  isLent\n  lastCalibrateAt\n  leaseBeginAt\n  leaseFinishAt\n  leaseNum\n  machineNumber\n  manufacturer\n  modelNum\n  name\n  nextCalibrateAt\n  onState\n  parentThingId\n  poNum\n  predictResidualRate\n  produceAt\n  purchasePrice\n  purchaseType\n  purchasedAt\n  qrCode\n  sapThingCode\n  serialNumber\n  specification\n  storageAddr\n  storageType\n  subThingId\n  thingSubjectCode\n  transferAt\n  usedYear\n  warrantyInstitutions\n  warrantyMethod\n  yearsOfUse\n  performanceStatus\n  warrantyStartAt\n  warrantyPeriod {\n    period\n    frequency\n    __typename\n  }\n  warrantyDeadlineAt\n  warrantyRemindPeriod {\n    period\n    frequency\n    __typename\n  }\n  __typename\n}"
+                                })
+
+        thinglist=res.json()
+
+        return thinglist['data']['thingList']['data'][0]
+
 if __name__ == '__main__':
     ad=API()
     token=ad.tc_login()
-    exs=ad.read_excel(config.login_file,'login')
-    print(exs)
+
+    thin=ad.canborrow_thing(token)
+
+    print(thin)
