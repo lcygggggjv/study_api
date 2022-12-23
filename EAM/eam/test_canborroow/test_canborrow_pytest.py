@@ -15,7 +15,10 @@ class Test_canborrow(API):
 
         self.token=self.tc_login()
 
-        self.thing=self.canborrow_thing(self.token)
+        self.times=self.time_stamp()
+
+        self.thing_id=self.canborrow_thing(self.token)
+
 
     @pytest.mark.parametrize('item',cases)
     def test_create_brw(self,item):
@@ -46,10 +49,14 @@ class Test_canborrow(API):
                                       "reason": "测试",
                                       "thing": [
                                         {
-                                          "id": "13710"
+                                          "id": self.thing_id
                                         }
                                       ]
                                     }
                                   },
                                   "query": "mutation createThingBorrow($input: SetThingBorrowInput!) {\n  createThingBorrow(input: $input)\n}"
                                 })
+
+
+
+

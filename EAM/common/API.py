@@ -1,3 +1,5 @@
+import datetime
+
 import requests
 
 from EAM.config.config import config
@@ -67,12 +69,39 @@ class API:
 
         thinglist=res.json()
 
-        return thinglist['data']['thingList']['data'][0]
+        return thinglist['data']['thingList']['data'][0]['id']
+
+    def time_stamp(self):
+
+        min_timestamp1 = datetime.datetime.combine(datetime.datetime.now(), datetime.time.min).timestamp()
+        max_timestamp2 = datetime.datetime.combine(datetime.datetime.now(), datetime.time.max).timestamp()
+
+        min_timestamp = int(round(min_timestamp1) * 1000-(86400000*3))
+        max_timestamp = int(round(max_timestamp2) * 1000)
+
+        return max_timestamp,min_timestamp
+
+
+    def max_stamp(self):
+
+        max_timestamp2 = datetime.datetime.combine(datetime.datetime.now(), datetime.time.max).timestamp()
+        max_timestamp = int(round(max_timestamp2) * 1000)
+
+        return max_timestamp
+
+    def min_stamp(self):
+
+        min_timestamp1 = datetime.datetime.combine(datetime.datetime.now(), datetime.time.min).timestamp()
+        min_timestamp = int(round(min_timestamp1) * 1000)
+
+        return min_timestamp
 
 if __name__ == '__main__':
     ad=API()
-    token=ad.tc_login()
+    # token=ad.tc_login()
+    #
+    # thin=ad.canborrow_thing(token)
+    ins=ad.time_stamp()
+    min=ad.min_stamp()
 
-    thin=ad.canborrow_thing(token)
-
-    print(thin)
+    print(ins,min)
