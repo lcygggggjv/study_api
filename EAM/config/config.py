@@ -1,6 +1,6 @@
 
 import pathlib
-
+import os.path
 
 class config:
 
@@ -9,7 +9,7 @@ class config:
 
     login_file=r'/Users/lcy/PycharmProjects/study_api/EAM/test_case/tc_cases.xlsx'
 
-    log=r'D:\Python_EAM_API\EAM\logger_log\log.txt'
+    # log=r'D:\Python_EAM_API\EAM\logger_log\log.txt'
 
     config_file=pathlib.Path(__file__).absolute().parent   #当前文件目录的父级 就是config
 
@@ -18,8 +18,8 @@ class config:
     root_dir=eam_dir.parent   #eam的父级，就是根目录，一般可直接再项目目录，拼接即可
     login_file=root_dir / eam_dir / 'test_case' / 'tc_cases.xlsx'
 
-    #mac地址
-    file_dir=r'/Users/lcy/PycharmProjects/study_api/EAM/test_case/tc_cases.xlsx'
+    # #mac地址
+    # file_dir=r'/Users/lcy/PycharmProjects/study_api/EAM/test_case/tc_cases.xlsx'
 
     log = root_dir / eam_dir / 'logger_log' / 'log.txt'
 
@@ -32,3 +32,5 @@ class config:
     sit_password='teletraan'
 
 
+c = config()
+print(c.log)

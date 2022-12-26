@@ -22,7 +22,7 @@ max_timestamp=int(round(max_timestamp2) *1000)
 
 
 local_time1=time.localtime(1671724800000)  
-local_time2=time.localtime(1671724800)  #公式通过秒，上面字符串是毫秒，需要转换成秒
+local_time2=time.localtime(1671638400000)  #公式通过秒，上面字符串是毫秒，需要转换成秒
 
 
 new1_time=time.strftime("%Y-%m-%d %H:%M:%S",local_time1)
